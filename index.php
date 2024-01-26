@@ -1,28 +1,27 @@
 <?php 
 
 if (isset($_GET['lunghezza']) && $_GET['lunghezza'] != '' && filter_var($_GET['lunghezza'], FILTER_VALIDATE_INT) ) {
-    $lunghezza = $_GET['lunghezza'];
-    echo $lunghezza;
+  
+    $lunghezza =intval($_GET['lunghezza']);  
+    
 
-    function generaStringa($lunghezza) {
-        $num = "0123456789";
-        $let = "abcdefghijklmnopqrstuvwxyz";
-        $special = "ωώωtΐtöÕõËéèäåắ";
     
-        $caratteri = $num . $let .$special ;
-    
-        $pwd = '';
-        for ($i = 0; $i < $lunghezza; $i++) {
-            $pwd .= $caratteri[rand(0, $lunghezza)];
-        }
-    
-        return $pwd;
-    };
-    
-}else{
-    
-} 
+}
 
+function generaStringa($lunghezza) {
+    $num = "0123456789";
+    $let = "abcdefghijklmnopqrstuvwxyz";
+    $special = ".,!{}[]=()<>?^:;";
+
+    $caratteri = $num . $let .$special ;
+    $lun = strlen($caratteri);
+    $pwd = '';
+    for ($i = 0; $i < $lunghezza; $i++) {
+        $pwd .= $caratteri[rand(0, $lun -1 )];
+    }
+
+    return $pwd;
+}
  
 
 ?>
@@ -50,7 +49,9 @@ if (isset($_GET['lunghezza']) && $_GET['lunghezza'] != '' && filter_var($_GET['l
                     <button class="btn btn-success">INVIA</button>
                 </div>
                 <div class="col-12">
-                        <?php echo generaStringa($lunghezza) ?>
+                    <?php if(isset($_GET['lunghezza'])){ ?>
+                        <?php echo  generaStringa($lunghezza) ?>
+                    <?php } ?>
                 </div>
             </form>
         </div>
