@@ -1,19 +1,23 @@
-<?php 
+<?php
+if (isset($_GET['lunghezza']) && $_GET['lunghezza'] != '' && filter_var($_GET['lunghezza'], FILTER_VALIDATE_INT)) {
 
-    include __DIR__.'/partials/functions.php'
- 
+    $lunghezza = intval($_GET['lunghezza']);
+}
+include __DIR__ . '/partials/functions.php'
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -28,7 +32,7 @@
                     <button class="btn btn-success">INVIA</button>
                 </div>
                 <div class="col-12">
-                    <?php if(isset($_GET['lunghezza'])){ ?>
+                    <?php if (isset($_GET['lunghezza'])) { ?>
                         <?php echo  generaStringa($lunghezza) ?>
                     <?php } ?>
                 </div>
@@ -36,4 +40,5 @@
         </div>
     </div>
 </body>
+
 </html>
